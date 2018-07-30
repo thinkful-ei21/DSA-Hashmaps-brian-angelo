@@ -15,6 +15,9 @@ function main() {
     lor.set('ent', 'treebeard');
     console.log(lor);
     console.log(lor.get('maiar'));
+
+
+    
 }
 
 main();

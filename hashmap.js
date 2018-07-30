@@ -76,6 +76,61 @@ class HashMap {
         }
       }
     }
+
+    function getAnagrams(string) {
+
+      for (let i = 0; i < string.length; i++) {
+        if (string[i] === reverseString(string[i])) {
+          return true;
+        }
+        let currentLetter = string[i].substring(i, i + 1);
+        let previousLetters = string[i].substring(0, i);
+        let afterLetters = string[i].substring(i + 1);
+        getAnagrams(previousLetters + afterLetters);
+      }
+
+      return false;
+    }
+
+    function reverseString(string) {
+      if (string === '') {
+        return '';
+      }
+
+      else return reverseString(string.substr(1)) + string.charAt(0)
+    };
+
+    console.log(getAnagrams(['asdfasdf', 'laskdjfasldkfjafd', 'afasdf', 'alsdfja', 'lasjdfaklsdf', 'akjsdflasdf' ]))
+
+    // console.log(reverseString('hello'));
+
+
+
+//     permutation(value){
+//       let pali = '';
+//       let combValue = '';
+//       /////this loop iterates throgh strings
+//       for(i = 0; i < value.length; i++ ){
+// ////iterate combinations of the string
+//         while(combValue[i] !== value.length[i] )
+//               comb
+//       }
+//
+//
+//
+//
+//         /////if / else to compare values
+//
+//
+//         /////if one of the string combinations is a palidrone return true
+//
+
+    //   }
+    // }
+
+
+
+
 }
 
 HashMap.MAX_LOAD_RATIO = 0.9;
