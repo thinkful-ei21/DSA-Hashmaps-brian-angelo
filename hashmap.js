@@ -1,4 +1,6 @@
 'use strict';
+
+const LinkedList = require('./linkedlist');
 ////what do hashmaps need?
 class HashMap {
   constructor(initialCapacity = 8){
@@ -38,6 +40,21 @@ class HashMap {
     };
     this.length++;
   }
+
+
+sperateChain(value){
+  let slotLink = new LinkedList();
+
+  if(slotLink.head === null){
+    slotLink.insertFirst(value);
+    console.log(value)
+  } else {
+    let newNode = new _Node(value, null);
+    slotLink.insertLast(newNode);
+  }
+}
+
+
 
   remove(key) {
     const index = this._findSlot(key);
