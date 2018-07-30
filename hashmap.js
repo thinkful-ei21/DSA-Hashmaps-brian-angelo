@@ -50,6 +50,10 @@ class HashMap {
     this._deleted++;
   }
 
+  forEach(fn) {
+    this._slots.forEach(fn)
+  }
+
     _findSlot(key) {
       const hash = HashMap._hashString(key);
       const start = hash % this._capacity;
@@ -57,7 +61,7 @@ class HashMap {
       for (let i = start; i < start + this._capacity; i++) {
         const index = i % this._capacity;
         const slot = this._slots[index];
-        if (slot === undefined || (slot.key == key && !slot.deleted)) {
+        if (slot === undefined || (slot.key === key && !slot.deleted)) {
           return index;
         }
       }
@@ -77,30 +81,30 @@ class HashMap {
       }
     }
 
-    function getAnagrams(string) {
+    // function getAnagrams(string) {
 
-      for (let i = 0; i < string.length; i++) {
-        if (string[i] === reverseString(string[i])) {
-          return true;
-        }
-        let currentLetter = string[i].substring(i, i + 1);
-        let previousLetters = string[i].substring(0, i);
-        let afterLetters = string[i].substring(i + 1);
-        getAnagrams(previousLetters + afterLetters);
-      }
+    //   for (let i = 0; i < string.length; i++) {
+    //     if (string[i] === reverseString(string[i])) {
+    //       return true;
+    //     }
+    //     let currentLetter = string[i].substring(i, i + 1);
+    //     let previousLetters = string[i].substring(0, i);
+    //     let afterLetters = string[i].substring(i + 1);
+    //     getAnagrams(previousLetters + afterLetters);
+    //   }
 
-      return false;
-    }
+    //   return false;
+    // }
 
-    function reverseString(string) {
-      if (string === '') {
-        return '';
-      }
+    // function reverseString(string) {
+    //   if (string === '') {
+    //     return '';
+    //   }
 
-      else return reverseString(string.substr(1)) + string.charAt(0)
-    };
+    //   else return reverseString(string.substr(1)) + string.charAt(0)
+    // };
 
-    console.log(getAnagrams(['asdfasdf', 'laskdjfasldkfjafd', 'afasdf', 'alsdfja', 'lasjdfaklsdf', 'akjsdflasdf' ]))
+    // console.log(getAnagrams(['asdfasdf', 'laskdjfasldkfjafd', 'afasdf', 'alsdfja', 'lasjdfaklsdf', 'akjsdflasdf' ]))
 
     // console.log(reverseString('hello'));
 

@@ -13,11 +13,37 @@ function main() {
     lor.set('ladyoflight', 'galadriel');
     lor.set('halfelven', 'arwen');
     lor.set('ent', 'treebeard');
-    console.log(lor);
-    console.log(lor.get('maiar'));
+    lor.set('ent', 'treebeard');
+    // console.log(lor);
+    // console.log(lor.get('maiar'));
+    // console.log(lor);
 
 
-    
+    console.log(permutation('racecar'));
 }
 
 main();
+
+function permutation(string) {
+    let hash = new HashMap();
+
+    for (let i = 0; i < string.length; i++) {
+        try {
+            let slot = hash.get(string[i]);
+            hash.set(string[i], slot+1);
+        } catch (err) {
+            hash.set(string[i], 1);
+        }     
+    }
+    let num = 0;
+
+    hash.forEach((item, index) => {
+        if (item.value % 2 !== 0) {
+            num++
+        }
+    });
+
+    return num > 1 ? false : true;
+}
+
+
