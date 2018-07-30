@@ -51,7 +51,9 @@ class HashMap {
   }
 
   forEach(fn) {
-    this._slots.forEach(fn)
+    this._slots
+    .filter(item => !item.deleted)
+    .forEach((item) => fn(item.value, item.key))
   }
 
     _findSlot(key) {

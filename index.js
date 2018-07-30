@@ -17,9 +17,9 @@ function main() {
     // console.log(lor);
     // console.log(lor.get('maiar'));
     // console.log(lor);
+    console.log(anagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
 
-
-    console.log(permutation('racecar'));
+    console.log(permutation('mom'));
 }
 
 main();
@@ -37,8 +37,8 @@ function permutation(string) {
     }
     let num = 0;
 
-    hash.forEach((item, index) => {
-        if (item.value % 2 !== 0) {
+    hash.forEach((item) => {
+        if (item % 2 !== 0) {
             num++
         }
     });
@@ -46,4 +46,23 @@ function permutation(string) {
     return num > 1 ? false : true;
 }
 
+function anagrams(array) {
+  let hash = new HashMap();
+  
+  for (let i = 0; i < array.length; i++) {
+    let alphabetized = sortAlphabet(array[i]);
+    try {
+      let group = hash.get(alphabetized);
+      hash.set(alphabetized, [...group, array[i]]);
+    } catch (err) {
+      hash.set(alphabetized, [array[i]]);
+    }
+  }
+  let arr = [];
+  hash.forEach((item) => arr.push(item))
+  return arr;
+}
 
+function sortAlphabet(str) {
+  return [...str].sort((a, b) => a.localeCompare(b)).join('');
+}
